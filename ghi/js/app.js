@@ -43,6 +43,7 @@ function sendAlert(message) {
 
 window.addEventListener('DOMContentLoaded', async () => {
 
+  const alert = document.querySelector('.container');
   const columns = document.querySelectorAll('.col');
   const url = 'http://localhost:8000/api/conferences/';
 
@@ -50,25 +51,18 @@ window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      const alert = document.querySelector('.container');
       alert.innerHTML = sendAlert("Unable to retrieve list of conferences");
-      console.log("ALERT SENT");
 
     } else {
       const data = await response.json();
 
-      let columnPosition = 0;
-      for (let i = 1; i <= data.conferences.length; i++) {
-        columns[columnPosition].innerHTML += placeholderCard();
-        columnPosition++;
-        if (columnPosition === 3)
-          columnPosition = 0;
+      for (let i = 0; i < data.conferences.length; i++) {
+        columns[i % 3].innerHTML += placeholderCard();
       }
 
       const cards = document.querySelectorAll('.card');
 
-      columnPosition = 0;
-      for (let conference of data.conferences) {
+      for (let [index, conference] of data.conferences.entries()) {
         const detailUrl = `http://localhost:8000${conference.href}`;
         const detailResponse = await fetch(detailUrl);
         if (detailResponse.ok) {
@@ -81,8 +75,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           const location = details.conference.location.name;
           const conferenceCard = createCard(name, description, pictureUrl, startDate, endDate, location);
 
-          cards[columnPosition].innerHTML = conferenceCard;
-          columnPosition++;
+          cards[index].innerHTML = conferenceCard;
         }
       }
     }
