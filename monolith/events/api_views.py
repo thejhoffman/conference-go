@@ -10,6 +10,7 @@ from .models import Conference, Location, State
 class LocationListEncoder(ModelEncoder):
     model = Location
     properties = [
+        "id",
         "name",
         "picture_url",
     ]
