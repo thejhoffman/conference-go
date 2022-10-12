@@ -1,3 +1,5 @@
+.vscode/
+
 events/keys.py
 database/data/*
 maildir/
