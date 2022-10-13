@@ -18,9 +18,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   formTag.addEventListener('submit', async event => {
     event.preventDefault();
 
+    const conference = document.querySelector('#conference');
+    const conferenceHREF = conference.value;
     const formData = Object.fromEntries(new FormData(formTag));
-    const conferenceHREF = formData.conference;
-    delete formData.conference;
     const json = JSON.stringify(formData);
 
     const locationUrl = `http://localhost:8000${conferenceHREF}presentations/`;
