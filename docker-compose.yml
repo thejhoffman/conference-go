@@ -65,6 +65,18 @@ services:
       - mail
     volumes:
       - ./presentation_workflow:/app
+  react-attendees:
+    image: node:latest
+    command: npm start
+    working_dir: /app
+    volumes:
+      - ./ghi/attendees:/app
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3001
+      - NODE_ENV=development
+    ports:
+      - "3001:3001"
   rabbitmq:
     image: rabbitmq:3
   mail:
