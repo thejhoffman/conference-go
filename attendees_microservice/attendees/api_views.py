@@ -35,7 +35,7 @@ class AttendeeDetailEncoder(ModelEncoder):
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_attendees(request, conference_vo_id=None):
+def api_list_attendees(request, conference_id=None):
     """
     Lists the attendees names and the link to the attendee
     for the specified conference id.
@@ -56,7 +56,12 @@ def api_list_attendees(request, conference_vo_id=None):
     }
     """
     if request.method == "GET":
-        attendees = Attendee.objects.filter(conference=conference_vo_id)
+        if conference_id is not None:
+            conference_href = f"/api/conferences/{conference_id}/"
+            conference = ConferenceVO.objects.get(import_href=conference_href)
+            attendees = Attendee.objects.filter(conference=conference)
+        else:
+            attendees = Attendee.objects.all()
         return JsonResponse(
             {"attendees": attendees},
             encoder=AttendeeListEncoder,
