@@ -1,9 +1,9 @@
 const App = (props) => {
-  if (props.attendees === undefined)
-    return null;
+  // if (props.attendees === undefined)
+  //   return null;
   return (
-    <div>
-      <table>
+    <div className="container">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
