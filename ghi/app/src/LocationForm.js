@@ -16,25 +16,10 @@ class LocationForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleNameChange(event) {
-    const value = event.target.value;
-    this.setState({ name: value });
-  }
-
-  handleRoomCountChange(event) {
-    const value = event.target.value;
-    this.setState({ roomCount: value });
-  }
-
-  handleCityChange(event) {
-    const value = event.target.value;
-    this.setState({ city: value });
-  }
-
-  handleStateChange(event) {
-    const value = event.target.value;
-    this.setState({ state: value });
-  }
+  handleNameChange(event) { this.setState({ name: event.target.value }); }
+  handleRoomCountChange(event) { this.setState({ roomCount: event.target.value }); }
+  handleCityChange(event) { this.setState({ city: event.target.value }); }
+  handleStateChange(event) { this.setState({ state: event.target.value }); }
 
   async handleSubmit(event) {
     event.preventDefault();
