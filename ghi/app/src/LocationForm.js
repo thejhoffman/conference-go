@@ -92,7 +92,8 @@ class LocationForm extends React.Component {
                   required
                   type="text"
                   id="name"
-                  name="name" />
+                  name="name"
+                />
                 <label htmlFor="name">Name</label>
               </div>
               <div className="form-floating mb-3">
@@ -104,7 +105,8 @@ class LocationForm extends React.Component {
                   required
                   type="number"
                   id="room_count"
-                  name="room_count" />
+                  name="room_count"
+                />
                 <label htmlFor="room_count">Room count</label>
               </div>
               <div className="form-floating mb-3">
@@ -116,7 +118,8 @@ class LocationForm extends React.Component {
                   required
                   type="text"
                   id="city"
-                  name="city" />
+                  name="city"
+                />
                 <label htmlFor="city">City</label>
               </div>
               <div className="mb-3">
