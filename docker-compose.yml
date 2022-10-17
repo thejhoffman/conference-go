@@ -65,12 +65,12 @@ services:
       - mail
     volumes:
       - ./presentation_workflow:/app
-  react-attendees:
+  react:
     image: node:latest
     command: npm start
     working_dir: /app
     volumes:
-      - ./ghi/attendees:/app
+      - ./ghi/app:/app
     environment:
       - HOST=0.0.0.0
       - PORT=3001
