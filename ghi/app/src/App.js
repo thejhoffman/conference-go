@@ -8,8 +8,8 @@ const App = (props) => {
   return (
     <React.Fragment>
       <Nav navItems={props.navItems} />
-      <AttendeesList attendees={props.attendees} />
       <div className="container">
+        <AttendeesList attendees={props.attendees} />
       </div>
     </React.Fragment>
   );
