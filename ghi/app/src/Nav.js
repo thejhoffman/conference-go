@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const Nav = (props) => {
-  const { rootHost, locationPerm, conferencePerm } = props.navItems;
+  const { locationPerm, conferencePerm } = props.navPerms;
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

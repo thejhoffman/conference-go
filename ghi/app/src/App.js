@@ -12,7 +12,7 @@ const App = (props) => {
     return null;
   return (
     <BrowserRouter>
-      <Nav navItems={props.navItems} />
+      <Nav navPerms={props.navPerms} />
       <div className="container">
         <Routes>
           <Route path="attendees" element={<AttendeesList attendees={props.attendees} />}>

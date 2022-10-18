@@ -4,24 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const navItems = {
-  rootHost: process.env.REACT_APP_ROOT_HOST,
+const navPerms = {
   locationPerm: false,
   conferencePerm: false,
 };
 
-window.addEventListener('DOMContentLoaded', async () => {
+const loadJstCookie = async () => {
   const payloadCookie = await window.cookieStore.get("jwt_access_payload");
 
   if (payloadCookie) {
     const payload = JSON.parse(atob(payloadCookie.value));
 
     if (payload.user.perms.includes("events.add_location"))
-      navItems.locationPerm = true;
+      navPerms.locationPerm = true;
     if (payload.user.perms.includes("events.add_conference"))
-      navItems.conferencePerm = true;
+      navPerms.conferencePerm = true;
   }
-});
+};
+loadJstCookie();
 
 const loadAttendees = async () => {
   const response = await fetch('http://localhost:8001/api/attendees/');
@@ -29,7 +29,7 @@ const loadAttendees = async () => {
     const data = await response.json();
     root.render(
       <React.StrictMode>
-        <App attendees={data.attendees} navItems={navItems} />
+        <App attendees={data.attendees} navPerms={navPerms} />
       </React.StrictMode>
     );
   } else {
