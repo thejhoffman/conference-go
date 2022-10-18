@@ -41,6 +41,7 @@ class AttendConferenceForm extends React.Component {
   }
 
   async componentDidMount() {
+    document.body.classList.add('bg-info');
     const url = 'http://localhost:8000/api/conferences/';
     const response = await fetch(url);
 
@@ -50,9 +51,13 @@ class AttendConferenceForm extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    document.body.classList.remove('bg-info');
+  }
+
   render() {
     return (
-      <div className="my-5">
+      <div className=" container my-5">
         <div className="row">
           <div className="col col-sm-auto">
             <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" width="300" alt="logo" />
